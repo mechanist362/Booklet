@@ -1,0 +1,417 @@
+
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flowchart Penggunaan Booklet KEGUPI</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            border-radius: 15px;
+            color: white;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .tagline {
+            font-size: 1.2em;
+            margin-top: 10px;
+            font-style: italic;
+        }
+        
+        .flowchart {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+        
+        .phase {
+            width: 100%;
+            max-width: 800px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            position: relative;
+            border-left: 6px solid;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .phase:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .phase-1 { border-left-color: #3498db; }
+        .phase-2 { border-left-color: #e74c3c; }
+        .phase-3 { border-left-color: #2ecc71; }
+        
+        .phase-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .phase-icon {
+            font-size: 2em;
+            padding: 10px;
+            border-radius: 50%;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .step {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            border: 2px solid #e9ecef;
+            transition: border-color 0.3s ease;
+        }
+        
+        .step:hover {
+            border-color: #007bff;
+        }
+        
+        .step-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: #007bff;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .step-title {
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #2c3e50;
+        }
+        
+        .step-desc {
+            font-size: 0.9em;
+            color: #666;
+            line-height: 1.4;
+        }
+        
+        .arrow {
+            font-size: 3em;
+            color: #bdc3c7;
+            margin: 10px 0;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+        
+        .tips {
+            background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 30px;
+        }
+        
+        .tips h3 {
+            margin-top: 0;
+            font-size: 1.4em;
+        }
+        
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .tip-item {
+            background: rgba(255,255,255,0.2);
+            padding: 15px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .emergency {
+            background: #ff6b6b;
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+            text-align: center;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(255, 107, 107, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 107, 107, 0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                margin: 10px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .steps {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏔️ KEGUPI BOOKLET 📖</h1>
+            <div class="tagline">"Siap Jelajah, Siap Siaga!"</div>
+            <div style="margin-top: 15px; font-size: 1.1em;">
+                Panduan Lengkap untuk Para Piers
+            </div>
+        </div>
+        
+        <div class="flowchart">
+            <!-- FASE 1: SEBELUM BERMAIN -->
+            <div class="phase phase-1">
+                <div class="phase-title">
+                    <div class="phase-icon">📚</div>
+                    FASE 1: SEBELUM BERMAIN KEGUPI
+                </div>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-title">Baca "Mengenal Merapi"</div>
+                        <div class="step-desc">
+                            📍 Halaman 5-12<br>
+                            • Peta lokasi & jalur<br>
+                            • Status aktivitas<br>
+                            • Zona bahaya
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-title">Pahami Geologi & Kimia</div>
+                        <div class="step-desc">
+                            🧪 Halaman 13-20<br>
+                            • Struktur gunung<br>
+                            • Proses kimia<br>
+                            • Mineral khas
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-title">Download Aplikasi AR</div>
+                        <div class="step-desc">
+                            📱 Scan QR Code<br>
+                            • Install KEGUPI AR<br>
+                            • Test fitur scan<br>
+                            • Update terbaru
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-title">Pelajari Aturan Main</div>
+                        <div class="step-desc">
+                            🎮 Halaman 3-4<br>
+                            • Komponen permainan<br>
+                            • Step-by-step<br>
+                            • Tips bermain
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="arrow">⬇️</div>
+            
+            <!-- FASE 2: SAAT BERMAIN -->
+            <div class="phase phase-2">
+                <div class="phase-title">
+                    <div class="phase-icon">🎯</div>
+                    FASE 2: SAAT BERMAIN KEGUPI
+                </div>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-title">Siapkan Booklet</div>
+                        <div class="step-desc">
+                            📖 Buka di samping papan<br>
+                            • Halaman "Bank Soal"<br>
+                            • Siap untuk referensi<br>
+                            • Smartphone ready
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-title">Gunakan AR Cards</div>
+                        <div class="step-desc">
+                            📷 Scan dengan HP<br>
+                            • Buka aplikasi AR<br>
+                            • Arahkan ke kartu<br>
+                            • Nikmati pengalaman 3D
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-title">Cek Jawaban</div>
+                        <div class="step-desc">
+                            ✅ Halaman 35-45<br>
+                            • Baca penjelasan<br>
+                            • Pahami konsep<br>
+                            • Diskusi dengan teman
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-title">Catat Pembelajaran</div>
+                        <div class="step-desc">
+                            📝 Jurnal Pendakian<br>
+                            • Tulis hal baru<br>
+                            • Kumpulkan sticker<br>
+                            • Track progress
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="arrow">⬇️</div>
+            
+            <!-- FASE 3: SETELAH BERMAIN -->
+            <div class="phase phase-3">
+                <div class="phase-title">
+                    <div class="phase-icon">🚀</div>
+                    FASE 3: SETELAH BERMAIN KEGUPI
+                </div>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-title">Praktik Eksperimen</div>
+                        <div class="step-desc">
+                            🧪 Halaman 46-49<br>
+                            • DIY volcano<br>
+                            • Observasi mineral<br>
+                            • Test pengetahuan
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-title">Siapkan Tas Siaga</div>
+                        <div class="step-desc">
+                            🎒 Halaman 25<br>
+                            • Checklist lengkap<br>
+                            • Protokol darurat<br>
+                            • Latihan keluarga
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-title">Join Komunitas</div>
+                        <div class="step-desc">
+                            👥 Halaman 56-57<br>
+                            • Daftar Piers Community<br>
+                            • Kegiatan offline<br>
+                            • Berbagi pengalaman
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-title">Dapatkan Sertifikat</div>
+                        <div class="step-desc">
+                            🏆 Complete achievements<br>
+                            • "Pier Certified"<br>
+                            • Badge digital<br>
+                            • Share ke sosmed
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tips">
+            <h3>💡 TIPS MAKSIMALKAN BOOKLET</h3>
+            <div class="tips-grid">
+                <div class="tip-item">
+                    <strong>📱 Digital Integration</strong><br>
+                    Manfaatkan semua QR codes untuk konten eksklusif
+                </div>
+                <div class="tip-item">
+                    <strong>🎯 Learning by Doing</strong><br>
+                    Praktik langsung eksperimen dan aktivitas
+                </div>
+                <div class="tip-item">
+                    <strong>👥 Community Power</strong><br>
+                    Gabung dengan sesama Piers untuk belajar bersama
+                </div>
+                <div class="tip-item">
+                    <strong>📚 Keep Reference</strong><br>
+                    Selalu bawa saat hiking ke Merapi
+                </div>
+            </div>
+        </div>
+        
+        <div class="emergency">
+            <h3>⚠️ PENTING!</h3>
+            <p><strong>Kontak Darurat selalu tersedia di Halaman 58</strong></p>
+            <p>SAR • BMKG • BPPTKG • Piers Support</p>
+            <p style="margin-top: 15px; font-size: 1.2em;">
+                <strong>"Siap Jelajah, Siap Siaga!"</strong>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
